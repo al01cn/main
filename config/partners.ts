@@ -24,8 +24,8 @@ export const partnersConfig: PartnersConfig = {
     },
     {
       name: "Mambashock",
-      avatar: "http://mambashock.cn/images/logo.png",
-      url: "https://mambashock.cn",
+      avatar: "http://www.mambashock.cn/images/logo.png",
+      url: "http://www.mambashock.cn",
       type: "company",
     },
   ],
