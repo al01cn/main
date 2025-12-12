@@ -44,20 +44,26 @@ export default function Navbar() {
   }
 
   /**
-   * 监听滚动事件，更新当前激活的导航项
+   * 监听滚动事件，更新当前激活的导航项（节流）
    */
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section")
-      let current = ""
-      sections.forEach(section => {
-        const top = section.offsetTop
-        if (window.scrollY >= top - 150) current = section.id
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const sections = document.querySelectorAll("section")
+        let current = ""
+        sections.forEach(section => {
+          const top = section.offsetTop
+          if (window.scrollY >= top - 150) current = section.id
+        })
+        setActiveSection(current)
+        ticking = false
       })
-      setActiveSection(current)
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   const { navItems } = siteConfig
@@ -115,7 +121,7 @@ export default function Navbar() {
   }, [menuOpen])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 h-[70px] bg-[var(--nav-bg)] backdrop-blur-md border-b border-[var(--border-color)] z-[100] transition-all duration-300">
+    <nav style={{ top: "var(--banner-offset, 0px)" }} className="fixed left-0 right-0 h-[70px] bg-[var(--nav-bg)] backdrop-blur-md border-b border-[var(--border-color)] z-[100] transition-all duration-300">
       <div className="container mx-auto px-5 flex justify-between items-center h-full">
         <a href="#" className="flex items-center gap-2 text-2xl font-semibold text-[var(--color-primary)] no-underline">
           {brandVariant === "text" ? (

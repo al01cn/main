@@ -15,14 +15,14 @@ export default function Ads() {
   }
 
   return (
-    <section id="ads" className="py-20 md:py-[80px] container mx-auto px-5">
+    <section id="explore" className="py-20 md:py-[80px] container mx-auto px-5">
       <div className="text-center mb-[60px] gs-anim">
         <h2 className="text-3xl md:text-4xl mb-2.5 inline-flex items-center gap-2.5 justify-center font-[family-name:var(--font-fredoka)]">
           <Megaphone weight="duotone" /> 特别推荐
         </h2>
         <p className="text-[var(--color-text-muted)] px-2.5">看看这些有趣的去处</p>
       </div>
-      <div className="sponsor-grid">
+      <div className="discover-grid">
         {adsConfig.map((item, index) => (
           <div 
             key={index} 

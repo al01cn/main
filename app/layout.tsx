@@ -4,6 +4,7 @@ import Script from "next/script"
 import "../styles/globals.css"
 import "dialog-polyfill/dist/dialog-polyfill.css"
 import Navbar from "../components/Navbar"
+import AdblockBanner from "../components/AdblockBanner"
 import CursorGlow from "../components/CursorGlow"
 import SmoothHashScroll from "../components/SmoothHashScroll"
 
@@ -179,6 +180,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="cursor-glow" />
         <div className="bg-grid" />
         <SmoothHashScroll />
+        <AdblockBanner />
         <Navbar />
         <CursorGlow />
         {children}

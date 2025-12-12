@@ -104,41 +104,42 @@ section {
   }
 }
 
-.sponsor-grid {
+.energy-grid {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap
 }
 
-.sponsor-card {
+.energy-card {
   width: 240px;
   height: 320px;
   perspective: 1000px;
   cursor: pointer
 }
 
-.sponsor-inner {
+.energy-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
   transition: transform .6s;
+  transition-property: transform;
   transform-style: preserve-3d
 }
 
-.sponsor-card:not(.no-flip):hover .sponsor-inner {
+.energy-card:not(.no-flip):hover .energy-inner {
   transform: rotateY(180deg)
 }
 
 @media(max-width:1024px) {
-  .sponsor-card:not(.no-flip) .sponsor-inner {
+  .energy-card:not(.no-flip) .energy-inner {
     transform: rotateY(180deg);
   }
 }
 
-.sponsor-front,
-.sponsor-back {
+.energy-front,
+.energy-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -153,16 +154,23 @@ section {
   box-shadow: var(--shadow-sm)
 }
 
-.sponsor-front svg {
+.energy-front svg {
   width: 4rem;
   height: 4rem;
   color: var(--color-secondary);
   margin-bottom: 15px
 }
 
-.sponsor-back {
+.energy-back {
   transform: rotateY(180deg);
   background: var(--color-bg-surface)
+}
+
+.discover-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap
 }
 
 .qr-placeholder {
@@ -223,6 +231,7 @@ dialog.drawer {
   outline: none;
   transform: translateX(-100%);
   transition: transform .3s var(--ease-spring);
+  transition-property: transform;
 }
 
 dialog.drawer::backdrop {

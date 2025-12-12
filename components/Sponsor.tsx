@@ -15,7 +15,7 @@ export default function Sponsor() {
   }
 
   return (
-    <section id="sponsor" className="py-20 md:py-[80px] container mx-auto px-5">
+    <section id="energy" className="py-20 md:py-[80px] container mx-auto px-5">
       <div className="text-center mb-[60px] gs-anim">
         <h2 className="text-3xl md:text-4xl mb-2.5 inline-flex items-center gap-2.5 justify-center font-[family-name:var(--font-fredoka)]">
           <Lightning weight="duotone" /> 发电站
@@ -23,12 +23,12 @@ export default function Sponsor() {
         <p className="text-[var(--color-text-muted)] px-2.5">投喂狼狼，加速开发速度</p>
         <p className="text-[var(--color-text-muted)] px-2.5 text-[12px]">但请尽自己的能力，就算不投喂，狼狼也会继续努力！</p>
       </div>
-      <div className="sponsor-grid">
+      <div className="energy-grid">
         {siteConfig.sponsors.map((item, index) => (
-          <div key={index} className={`sponsor-card gs-anim-item ${item.mode === "to" ? "no-flip" : ""}`}>
+          <div key={index} className={`energy-card gs-anim-item ${item.mode === "to" ? "no-flip" : ""}`}>
             {item.mode === "to" ? (
-              <Link href={item.url} target="_blank" className="sponsor-inner block h-full w-full">
-                <div className="sponsor-front flex flex-col items-center justify-center h-full">
+              <Link href={item.url} target="_blank" className="energy-inner block h-full w-full">
+                <div className="energy-front flex flex-col items-center justify-center h-full">
                   {item.icon}
                   <h3>{item.name}</h3>
                   <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 flex flex-col items-center gap-1">
@@ -37,13 +37,13 @@ export default function Sponsor() {
                 </div>
               </Link>
             ) : (
-              <div className="sponsor-inner">
-                <div className="sponsor-front">
+              <div className="energy-inner">
+                <div className="energy-front">
                   {item.icon}
                   <h3>{item.name}</h3>
                   <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 hidden md:block">{item.text}</p>
                 </div>
-                <div className="sponsor-back">
+                <div className="energy-back">
                   {item.type === "url" ? (
                     <div className="w-[150px] h-[150px] relative mx-auto bg-white p-2 rounded-lg flex items-center justify-center">
                       <QRCodeCanvas value={item.url} size={134} />

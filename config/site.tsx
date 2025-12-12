@@ -45,7 +45,8 @@ export const siteConfig: SiteConfig = {
     { id: "skills", label: "装备库" },
     { id: "projects", label: "次元口袋" },
     { id: "partners", label: "合作伙伴" },
-    { id: "sponsor", label: "发电站" },
+    { id: "energy", label: "发电站" },
+    { id: "explore", label: "特别推荐" },
   ],
   socials: [
     {
@@ -74,7 +75,7 @@ export const siteConfig: SiteConfig = {
       name: "微信投喂",
       text: "(Hover to scan)",
       icon: <WechatLogo weight="fill" color="#28C445" />,
-      url: "/images/sponsor/wx.png",
+      url: "/media/wx",
       type: "img",
       mode: "qrcode"
     },
@@ -82,7 +83,7 @@ export const siteConfig: SiteConfig = {
       name: "支付宝投喂",
       text: "(Hover to scan)",
       icon: <Icon icon="ri:alipay-fill" color="#0096FF" className="font-bold w-[1.2rem] h-[1.2rem]" />,
-      url: "/images/sponsor/zfb.png",
+      url: "/media/zfb",
       type: "img",
       mode: "qrcode"
     },
