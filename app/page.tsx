@@ -4,6 +4,7 @@ import Hero from "../components/Hero"
 import useGsapHomeAnimations from "../hooks/useGsapHomeAnimations"
 import Skills from "../components/Skills"
 import Projects from "../components/Projects"
+import Partners from "../components/Partners"
 import Footer from "../components/Footer"
 import Sponsor from "../components/Sponsor"
 
@@ -14,6 +15,7 @@ export default function Page() {
       <Hero />
       <Skills />
       <Projects />
+      <Partners />
       <Sponsor />
       <Footer />
     </main>

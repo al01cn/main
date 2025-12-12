@@ -1,8 +1,19 @@
 "use client"
 
-import { Lightning, Coffee, WechatLogo } from "@phosphor-icons/react"
+import { Lightning, ArrowRight } from "@phosphor-icons/react"
+import Image from "next/image"
+import { siteConfig } from "../config/site"
+import { useState } from "react"
+import { QRCodeCanvas } from "qrcode.react"
+import Link from "next/link"
 
 export default function Sponsor() {
+  const [errors, setErrors] = useState<Record<number, boolean>>({})
+
+  const handleError = (index: number) => {
+    setErrors((prev) => ({ ...prev, [index]: true }))
+  }
+
   return (
     <section id="sponsor" className="py-20 md:py-[80px] container mx-auto px-5">
       <div className="text-center mb-[60px] gs-anim">
@@ -13,32 +24,49 @@ export default function Sponsor() {
         <p className="text-[var(--color-text-muted)] px-2.5 text-[12px]">但请尽自己的能力，就算不投喂，狼狼也会继续努力！</p>
       </div>
       <div className="sponsor-grid">
-        <div className="sponsor-card gs-anim-item">
-          <div className="sponsor-inner">
-            <div className="sponsor-front">
-              <Coffee weight="fill" />
-              <h3>Buy me a Coffee</h3>
-              <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 hidden md:block">(Hover to scan)</p>
-            </div>
-            <div className="sponsor-back">
-              <div className="qr-placeholder">QR Code</div>
-              <p>感谢支持！</p>
-            </div>
+        {siteConfig.sponsors.map((item, index) => (
+          <div key={index} className={`sponsor-card gs-anim-item ${item.mode === "to" ? "no-flip" : ""}`}>
+            {item.mode === "to" ? (
+              <Link href={item.url} target="_blank" className="sponsor-inner block h-full w-full">
+                <div className="sponsor-front flex flex-col items-center justify-center h-full">
+                  {item.icon}
+                  <h3>{item.name}</h3>
+                  <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 flex flex-col items-center gap-1">
+                    {item.text} <ArrowRight />
+                  </p>
+                </div>
+              </Link>
+            ) : (
+              <div className="sponsor-inner">
+                <div className="sponsor-front">
+                  {item.icon}
+                  <h3>{item.name}</h3>
+                  <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 hidden md:block">{item.text}</p>
+                </div>
+                <div className="sponsor-back">
+                  {item.type === "url" ? (
+                    <div className="w-[150px] h-[150px] relative mx-auto bg-white p-2 rounded-lg flex items-center justify-center">
+                      <QRCodeCanvas value={item.url} size={134} />
+                    </div>
+                  ) : item.type === "img" && !errors[index] ? (
+                    <div className="w-[150px] h-[150px] relative mx-auto bg-white p-2 rounded-lg flex items-center justify-center">
+                      <Image
+                        src={item.url}
+                        alt={`${item.name} QR`}
+                        fill
+                        className="object-contain p-2"
+                        onError={() => handleError(index)}
+                      />
+                    </div>
+                  ) : (
+                    <div className="qr-placeholder text-black text-sm">{errors[index] ? "加载失败" : "暂未配置"}</div>
+                  )}
+                  <p>感谢支持！</p>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="sponsor-card gs-anim-item">
-          <div className="sponsor-inner">
-            <div className="sponsor-front">
-              <WechatLogo weight="fill" color="#28C445" />
-              <h3>微信投喂</h3>
-              <p className="text-[var(--color-text-muted)] text-[0.8rem] mt-2.5 hidden md:block">(Hover to scan)</p>
-            </div>
-            <div className="sponsor-back">
-              <div className="qr-placeholder">WeChat QR</div>
-              <p>老板大气！</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   )

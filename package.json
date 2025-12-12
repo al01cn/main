@@ -14,6 +14,7 @@
     "embla-carousel-wheel-gestures": "^8.1.0",
     "gsap": "latest",
     "next": "latest",
+    "qrcode.react": "^4.2.0",
     "react": "latest",
     "react-dom": "latest"
   },
