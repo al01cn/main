@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { siteConfig } from "../config/site"
-import { Code, Sparkle, ArrowRight, GithubLogo, Robot, BatteryCharging, MusicNotes, Coffee, Code as CodeIcon } from "@phosphor-icons/react"
+import { Code, Sparkle, ArrowRight, GithubLogo, Robot, BatteryCharging, MusicNotes, Coffee, Code as CodeIcon, Lightbulb } from "@phosphor-icons/react"
 import Link from "next/link"
 
 export default function Hero() {
@@ -31,44 +31,44 @@ export default function Hero() {
           </Link>
         </div>
       </div>
-      
+
       <div className="flex-1 flex justify-center w-full relative gs-reveal">
         {/* Decoration Circles */}
-        <div className="absolute top-[-20px] right-[-20px] w-[300px] h-[300px] rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] opacity-20 blur-[40px] z-[1] pointer-events-none md:opacity-20 opacity-15" />
-        <div className="absolute bottom-[-40px] left-[-40px] w-[200px] h-[200px] rounded-full bg-[var(--color-primary)] opacity-20 blur-[40px] z-[1] pointer-events-none md:opacity-20 opacity-15" />
-        
+        <div className="absolute top-[-20px] right-[-20px] w-[300px] h-[300px] rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] opacity-20 blur-[40px] z-[1] pointer-events-none md:opacity-20" />
+        <div className="absolute bottom-[-40px] left-[-40px] w-[200px] h-[200px] rounded-full bg-[var(--color-primary)] opacity-20 blur-[40px] z-[1] pointer-events-none md:opacity-20" />
+
         <div className="relative w-full max-w-[300px] md:max-w-[320px] min-h-[400px] md:min-h-[420px] perspective-[1000px] group">
           {/* Front Card */}
           <div
             className={`
               absolute inset-0 bg-[var(--color-bg-surface)] rounded-3xl p-5 border border-[var(--border-color)] shadow-xl transition-all duration-500 origin-bottom cursor-pointer
-              ${active === "front" 
-                ? "z-10 translate-y-0 rotate-0 scale-100 opacity-100 grayscale-0" 
-                : "z-[5] translate-y-0 rotate-6 scale-95 opacity-80 grayscale-[0.4] md:group-hover:translate-x-[40px] md:group-hover:-translate-y-[10px] md:group-hover:rotate-12 md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:scale-95 translate-x-[20px] translate-y-[10px]"}
+              ${active === "front"
+                ? "z-10 translate-y-0 rotate-0 scale-100 opacity-100 grayscale-0"
+                : "z-[5] translate-y-0 rotate-6 scale-95 opacity-80 grayscale-[0.4] md:group-hover:translate-x-[40px] md:group-hover:-translate-y-[10px] md:group-hover:rotate-12 md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:scale-95 translate-x-[20px]"}
             `}
             onClick={toggle}
           >
             <div className="w-full h-[200px] md:h-[240px] bg-[#E0F2FE] rounded-xl mb-5 flex items-center justify-center overflow-hidden relative">
-              <div className="w-20 h-20 md:w-12 md:h-12 rounded-full overflow-hidden">
-                <img src="/icon.png" className="w-full h-full object-cover" alt={siteConfig.nickname} />
+              <div className="w-full h-full md:w-full md:h-full rounded-full overflow-hidden">
+                <img src="/icon.png" style={{ width: "100%", height: "100%" }} className="w-full h-full object-cover" alt={siteConfig.nickname} />
               </div>
             </div>
             <div className="mb-2">
               <h3 className="text-2xl font-bold mb-2">{siteConfig.nickname}</h3>
-              <p className="text-[var(--color-text-muted)] text-sm">Lv. 25 Fullstack Developer</p>
+              <p className="text-[var(--color-text-muted)] text-sm"></p>
             </div>
             <div className="flex justify-between mt-4 pt-4 border-t border-[var(--border-color)]">
               <div className="text-center">
-                <div className="font-bold text-[var(--color-primary)] font-mono">42</div>
-                <div className="text-xs text-[var(--color-text-muted)]">Projects</div>
+                <div className="font-bold text-[var(--color-primary)] font-mono">10+</div>
+                <div className="text-xs text-[var(--color-text-muted)]">项目</div>
               </div>
               <div className="text-center">
                 <div className="font-bold text-[var(--color-primary)] font-mono">8k+</div>
-                <div className="text-xs text-[var(--color-text-muted)]">Commits</div>
+                <div className="text-xs text-[var(--color-text-muted)]">提交</div>
               </div>
               <div className="text-center">
-                <div className="font-bold text-[var(--color-primary)] font-mono">99</div>
-                <div className="text-xs text-[var(--color-text-muted)]">Coffee</div>
+                <div className="font-bold text-[var(--color-primary)] font-mono">5</div>
+                <div className="text-xs text-[var(--color-text-muted)]">等级</div>
               </div>
             </div>
           </div>
@@ -77,28 +77,32 @@ export default function Hero() {
           <div
             className={`
               absolute inset-0 bg-[var(--color-bg-surface)] rounded-3xl p-5 border border-[var(--border-color)] shadow-xl transition-all duration-500 origin-bottom cursor-pointer flex items-center justify-center
-              ${active === "back" 
-                ? "z-10 translate-y-0 rotate-0 scale-100 opacity-100 grayscale-0" 
-                : "z-[5] translate-y-0 rotate-6 scale-95 opacity-80 grayscale-[0.4] md:group-hover:translate-x-[40px] md:group-hover:-translate-y-[10px] md:group-hover:rotate-12 md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:scale-95 translate-x-[20px] translate-y-[10px]"}
+              ${active === "back"
+                ? "z-10 translate-y-0 rotate-0 scale-100 opacity-100 grayscale-0"
+                : "z-[5] translate-y-0 rotate-6 scale-95 opacity-80 grayscale-[0.4] md:group-hover:translate-x-[40px] md:group-hover:-translate-y-[10px] md:group-hover:rotate-12 md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:scale-95 translate-x-[20px]"}
             `}
             onClick={toggle}
           >
             <div className="w-full bg-[var(--color-bg-subtle)] p-6 rounded-2xl border border-dashed border-[var(--border-color)]">
               <div className="flex justify-between mb-3 pb-3 border-b border-[var(--border-color)]">
-                <span className="flex items-center gap-2 font-semibold text-sm"><BatteryCharging weight="fill" size={16} /> 能量值</span>
-                <span className="text-[var(--color-primary)] font-mono font-bold">85%</span>
+                <span className="flex items-center gap-2 font-semibold text-sm"><Lightbulb weight="fill" size={16} /> 喜好</span>
+                <span className="text-[var(--color-primary)] font-mono font-bold">音乐、游戏、动漫</span>
               </div>
               <div className="flex justify-between mb-3 pb-3 border-b border-[var(--border-color)]">
                 <span className="flex items-center gap-2 font-semibold text-sm"><MusicNotes weight="fill" size={16} /> BGM</span>
-                <span className="text-[var(--color-primary)] font-mono font-bold">Synthwave Mix</span>
+                <span className="text-[var(--color-primary)] font-mono font-bold">不染 - 毛不易</span>
               </div>
               <div className="flex justify-between mb-3 pb-3 border-b border-[var(--border-color)]">
-                <span className="flex items-center gap-2 font-semibold text-sm"><Coffee weight="fill" size={16} /> 咖啡消耗</span>
-                <span className="text-[var(--color-primary)] font-mono font-bold">3 Cups/Day</span>
+                <span className="flex items-center gap-2 font-semibold text-sm"><Coffee weight="fill" size={16} /> 年龄</span>
+                <span className="text-[var(--color-primary)] font-mono font-bold">21岁</span>
+              </div>
+              <div className="flex justify-between mb-3 pb-3 border-b border-[var(--border-color)]">
+                <span className="flex items-center gap-2 font-semibold text-sm"><CodeIcon weight="fill" size={16} /> 编辑器</span>
+                <span className="text-[var(--color-primary)] font-mono font-bold">VS Code、Trae</span>
               </div>
               <div className="flex justify-between">
-                <span className="flex items-center gap-2 font-semibold text-sm"><CodeIcon weight="fill" size={16} /> 编辑器</span>
-                <span className="text-[var(--color-primary)] font-mono font-bold">VS Code</span>
+                <span className="flex items-center gap-2 font-semibold text-sm"><Robot weight="fill" size={16} /> 擅长</span>
+                <span className="text-[var(--color-primary)] font-mono font-bold">Vue 3、React</span>
               </div>
             </div>
           </div>
