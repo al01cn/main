@@ -14,11 +14,18 @@ export default function useGsapHomeAnimations() {
 
       gsap.utils.toArray(".gs-anim").forEach(el => {
         gsap.from(el as Element, {
-          scrollTrigger: { trigger: el as Element, start: "top 80%", toggleActions: "play none none none", once: true },
+          scrollTrigger: {
+            trigger: el as Element,
+            start: "top 80%",
+            toggleActions: "play none none none",
+            once: true,
+            invalidateOnRefresh: true,
+          },
           y: 30,
           opacity: 0,
           duration: 0.8,
           ease: "power3.out",
+          immediateRender: false,
         })
       })
 
@@ -26,7 +33,13 @@ export default function useGsapHomeAnimations() {
         const items = (container as Element).querySelectorAll(".gs-anim-item")
         if (items.length > 0) {
           gsap.from(items, {
-            scrollTrigger: { trigger: container as Element, start: "top 85%" , toggleActions: "play none none none", once: true },
+            scrollTrigger: {
+              trigger: container as Element,
+              start: "top 85%" ,
+              toggleActions: "play none none none",
+              once: true,
+              invalidateOnRefresh: true,
+            },
             y: 50,
             opacity: 0,
             duration: 0.6,
@@ -36,6 +49,8 @@ export default function useGsapHomeAnimations() {
           })
         }
       })
+
+      ScrollTrigger.refresh()
     })
     return () => {
       ctx.revert()
