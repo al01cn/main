@@ -44,12 +44,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = [
-    { id: "home", label: "主页" },
-    { id: "skills", label: "装备库" },
-    { id: "projects", label: "次元口袋" },
-    { id: "sponsor", label: "发电站" },
-  ]
+  const { navItems } = siteConfig
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""

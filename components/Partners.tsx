@@ -5,16 +5,49 @@ import { useState, useEffect } from "react"
 import { Handshake } from "@phosphor-icons/react"
 import { partnersConfig, Partner } from "../config/partners"
 import Image from "next/image"
+import SectionFallback from "./SectionFallback"
 
 export default function Partners() {
   const { title, subtitle, partners } = partnersConfig
-  const isMarquee = partners.length > 3
   const [direction, setDirection] = useState<"left" | "right">("left")
   
   // Random direction on mount
   useEffect(() => {
     setDirection(Math.random() > 0.5 ? "left" : "right")
   }, [])
+
+  const renderContent = () => {
+    if (!partners) {
+      return <SectionFallback kind="error" title="获取失败" description="无法加载合作伙伴数据" />
+    }
+
+    if (partners.length === 0) {
+      return <SectionFallback kind="empty" title="暂无配置" description="暂无合作伙伴信息" />
+    }
+
+    const isMarquee = partners.length > 3
+
+    if (isMarquee) {
+      return (
+        <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+           <div className={`flex gap-8 w-max items-center ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} pause-on-hover py-4`}>
+            {/* Duplicate list 4 times to ensure smooth scrolling and compatibility with -50% animation */}
+            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
+              <PartnerCard key={`${partner.name}-${index}`} partner={partner} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center items-center">
+         {partners.map((partner, index) => (
+            <PartnerCard key={index} partner={partner} />
+          ))}
+      </div>
+    )
+  }
 
   return (
     <section id="partners" className="py-20 md:py-[80px] container mx-auto px-5 overflow-hidden">
@@ -25,22 +58,7 @@ export default function Partners() {
         <p className="text-[var(--color-text-muted)] px-2.5">{subtitle}</p>
       </div>
 
-      {isMarquee ? (
-        <div className="relative w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-           <div className={`flex gap-8 w-max items-center ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} pause-on-hover py-4`}>
-            {/* Duplicate list 4 times to ensure smooth scrolling and compatibility with -50% animation */}
-            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
-              <PartnerCard key={`${partner.name}-${index}`} partner={partner} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center items-center">
-           {partners.map((partner, index) => (
-              <PartnerCard key={index} partner={partner} />
-            ))}
-        </div>
-      )}
+      {renderContent()}
     </section>
   )
 }

@@ -7,7 +7,7 @@ import SmoothHashScroll from "../components/SmoothHashScroll"
 
 export const metadata: Metadata = {
   title: "灵狼AL01，喜欢二次元的技术宅",
-  description: "代码与想象力的交汇点，只为了实现自己的奇思妙想",
+  description: "热衷于将代码与想象力结合，为用户提供优雅的 Web 应用。喜欢探索提瓦特大陆，也喜欢与星穹铁道一同开拓，还喜欢探索新的技术和创意。",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -15,6 +15,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN" data-theme="light" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-MWN3Q5B5');
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBSGGY1M6H"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-LBSGGY1M6H');
+            `,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -61,12 +87,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MWN3Q5B5"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <div className="cursor-glow" />
         <div className="bg-grid" />
         <SmoothHashScroll />
         <Navbar />
         <CursorGlow />
         {children}
+        {/* Cloudflare Web Analytics */}
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "047ee82d29d143dbb1b95834f48f5357"}'></script>
+        {/* End Cloudflare Web Analytics */}
       </body>
     </html>
   )

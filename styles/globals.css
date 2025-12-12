@@ -131,8 +131,8 @@ section {
   transform: rotateY(180deg)
 }
 
-@media(max-width:768px) {
-  .sponsor-card .sponsor-inner {
+@media(max-width:1024px) {
+  .sponsor-card:not(.no-flip) .sponsor-inner {
     transform: rotateY(180deg);
   }
 }

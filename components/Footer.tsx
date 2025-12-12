@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { siteConfig } from "../config/site"
-import { TwitterLogo, GithubLogo, DiscordLogo, EnvelopeSimple } from "@phosphor-icons/react"
 
 export default function Footer() {
   const MIIT_URL = "https://beian.miit.gov.cn/"
@@ -14,18 +13,16 @@ export default function Footer() {
     <footer className="bg-[var(--color-bg-surface)] border-t border-[var(--border-color)] py-[60px] pb-[30px] mt-20">
       <div className="container mx-auto px-5 flex flex-col md:flex-row md:justify-between items-center gap-5 text-center md:text-left">
         <div className="flex gap-5 md:order-2">
-          <a href="#" className="w-11 h-11 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center text-xl transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white hover:scale-110 hover:rotate-[10deg] no-underline">
-            <TwitterLogo weight="fill" className="w-[1.2rem] h-[1.2rem]" />
-          </a>
-          <a href={siteConfig.github || "#"} className="w-11 h-11 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center text-xl transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white hover:scale-110 hover:rotate-[10deg] no-underline">
-            <GithubLogo weight="fill" className="w-[1.2rem] h-[1.2rem]" />
-          </a>
-          <a href="#" className="w-11 h-11 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center text-xl transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white hover:scale-110 hover:rotate-[10deg] no-underline">
-            <DiscordLogo weight="fill" className="w-[1.2rem] h-[1.2rem]" />
-          </a>
-          <a href={siteConfig.email ? `mailto:${siteConfig.email}` : "#"} className="w-11 h-11 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center text-xl transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white hover:scale-110 hover:rotate-[10deg] no-underline">
-            <EnvelopeSimple weight="fill" className="w-[1.2rem] h-[1.2rem]" />
-          </a>
+          {siteConfig.socials.map((social, index) => (
+            <a
+              key={index}
+              href={social.url}
+              className="w-11 h-11 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center text-xl transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white hover:scale-110 hover:rotate-[10deg] no-underline"
+              aria-label={social.name}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
         
         <div className="md:order-1">

@@ -25,7 +25,7 @@ export const partnersConfig: PartnersConfig = {
     {
       name: "Mambashock",
       avatar: "http://www.mambashock.cn/images/logo.png",
-      url: "https://vercel.com",
+      url: "https://www.mambashock.cn",
       type: "company",
     },
   ],

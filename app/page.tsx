@@ -7,6 +7,7 @@ import Projects from "../components/Projects"
 import Partners from "../components/Partners"
 import Footer from "../components/Footer"
 import Sponsor from "../components/Sponsor"
+import Ads from "../components/Ads"
 
 export default function Page() {
   useGsapHomeAnimations()
@@ -17,6 +18,7 @@ export default function Page() {
       <Projects />
       <Partners />
       <Sponsor />
+      <Ads />
       <Footer />
     </main>
   )

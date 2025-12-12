@@ -17,10 +17,8 @@ export const skillsConfig: SkillsConfig = {
   items: [
     { name: "React", icon: <Atom weight="duotone" className="skill-icon" /> },
     { name: "TypeScript", icon: <FileTs weight="duotone" className="skill-icon" /> },
-    { name: "UI Design", icon: <PaintBrush weight="duotone" className="skill-icon" /> },
     { name: "Node.js", icon: <Database weight="duotone" className="skill-icon" /> },
     { name: "AI/LLM", icon: <Robot weight="duotone" className="skill-icon" /> },
-    { name: "Unity", icon: <GameController weight="duotone" className="skill-icon" /> },
   ],
 }
 

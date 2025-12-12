@@ -1,6 +1,6 @@
-# NexTaku | 科技宅的异世界
+# 灵狼AL01，喜欢二次元的技术宅
 
-一个基于 Next.js + GSAP 的单页网站，融合 1.html 的动效与 2.html 的样式布局。
+一个基于 Next.js + GSAP 的单页网站，代码与想象力的交汇点，只为了实现自己的奇思妙想。
 
 ## 技术栈
 - Next.js App Router（TypeScript）
@@ -30,12 +30,15 @@ components/
   Hero.tsx
   Skills.tsx
   Projects.tsx
-  About.tsx
+  Partners.tsx
   Sponsor.tsx
   Footer.tsx
   CursorGlow.tsx
 config/
-  site.ts
+  site.tsx
+  skills.tsx
+  projects.tsx
+  partners.ts
 hooks/
   useGsapHomeAnimations.ts
 styles/
@@ -43,20 +46,24 @@ styles/
 ```
 
 ## 站点配置
-- 配置文件：`config/site.ts`
-- 导出对象：`siteConfig`，包含 `nickname`、`brandName`、`github`、`email`、`icp`、`psb`、`copyrightOwner`、`copyrightStartYear`
+- 配置文件：`config/site.tsx`
+- 导出对象：`siteConfig`，包含 `nickname`、`brandName`、`github`、`email`、`icp`、`psb`、`copyrightOwner`、`copyrightStartYear`、`socials`
 - 使用示例：
-  - Navbar 品牌名：`components/Navbar.tsx:90` 读取 `siteConfig.brandName`
-  - Hero 昵称与 GitHub 链接：`components/Hero.tsx:13`、`components/Hero.tsx:17` 读取 `siteConfig.nickname`、`siteConfig.github`
-  - Footer 昵称与备案信息：`components/Footer.tsx:16`、`components/Footer.tsx:20-37` 读取 `siteConfig.nickname`、`siteConfig.icp`、`siteConfig.psb`
+  - Navbar 品牌名：`components/Navbar.tsx` 读取 `siteConfig.brandName`
+  - Hero 昵称与 GitHub 链接：`components/Hero.tsx` 读取 `siteConfig.nickname`、`siteConfig.github`
+  - Footer 社交链接：`components/Footer.tsx` 遍历渲染 `siteConfig.socials`
+  - Footer 昵称与备案信息：`components/Footer.tsx` 读取 `siteConfig.nickname`、`siteConfig.icp`、`siteConfig.psb`
 
 ## 分区配置
-- 装备库：`config/skills.ts`
+- 装备库：`config/skills.tsx`
   - 导出对象：`skillsConfig`，包含 `title`、`subtitle`、`items[{ name, icon }]`
-  - 使用位置：`components/Skills.tsx:4` 引入；`components/Skills.tsx:18-23` 渲染标题副标题与技能项
-- 次元口袋：`config/projects.ts`
+  - 使用位置：`components/Skills.tsx` 引入；渲染标题副标题与技能项
+- 次元口袋：`config/projects.tsx`
   - 导出对象：`projectsConfig`，包含 `title`、`subtitle`、`projects[{ title, description, tags[], icon, links[] }]`
   - 使用位置：在 `components/Projects.tsx` 中引入并以 Carousel 渲染项目卡片
+- 合作伙伴：`config/partners.ts`
+  - 导出对象：`partnersConfig`
+  - 使用位置：`components/Partners.tsx`
 
 ## 项目封面显示规则
 - 支持两种封面来源：`img`（图片路径，来自 `public/`）与 `icon`（JSX 图标元素）
@@ -104,4 +111,4 @@ styles/
 - 保持类名与动画语义一致，避免随意更改
 
 ## 许可
-- MIT
+- Apache License 2.0
