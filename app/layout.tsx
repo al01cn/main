@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "../styles/globals.css"
 import "dialog-polyfill/dist/dialog-polyfill.css"
@@ -149,6 +150,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+
+        <Script
+          id="baidu-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?0bf4696324d592c077c46839ed3ec71e";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+              })();
+            `,
+          }}
+        />
         
         <noscript>
           <iframe
@@ -165,6 +182,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <CursorGlow />
         {children}
+        <Analytics />
         
         <Script
           src="https://static.cloudflareinsights.com/beacon.min.js"
