@@ -7,6 +7,10 @@ import TextLogoIcon from "./TextLogoIcon"
 import TextLogo2Icon from "./TextLogo2Icon"
 import { useTheme } from "../hooks/useTheme"
 
+/**
+ * 导航栏组件
+ * 包含品牌 Logo、导航链接、移动端菜单、主题切换和模式切换功能
+ */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
@@ -14,15 +18,24 @@ export default function Navbar() {
   const [brandVariant, setBrandVariant] = useState<"text" | "text2">("text")
   const { mode, theme, setMode, toggleManual } = useTheme()
 
+  /**
+   * 随机切换品牌 Logo 变体 (彩蛋)
+   */
   useEffect(() => {
     const r = Math.random()
     setBrandVariant(r < 0.12 ? "text2" : "text")
   }, [])
 
+  /**
+   * 处理手动切换亮/暗主题
+   */
   const handleThemeButton = () => {
     toggleManual()
   }
   
+  /**
+   * 循环切换主题模式：手动 -> 跟随系统 -> 跟随时间
+   */
   const cycleMode = () => {
     const order = ["manual", "system", "time"] as const
     const idx = order.indexOf(mode as any)
@@ -30,6 +43,9 @@ export default function Navbar() {
     setMode(next as any)
   }
 
+  /**
+   * 监听滚动事件，更新当前激活的导航项
+   */
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section")
@@ -46,10 +62,12 @@ export default function Navbar() {
 
   const { navItems } = siteConfig
 
+  // 当移动端菜单打开时，禁止背景滚动
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""
   }, [menuOpen])
 
+  // 初始化 Dialog Polyfill (针对旧版浏览器)
   useEffect(() => {
     const dlg = drawerRef.current
     if (!dlg) return
@@ -61,6 +79,7 @@ export default function Navbar() {
     }
   }, [])
 
+  // 监听 Dialog 的取消事件 (Esc 键)
   useEffect(() => {
     const dlg = drawerRef.current
     if (!dlg) return
@@ -72,6 +91,7 @@ export default function Navbar() {
     return () => dlg.removeEventListener("cancel", onCancel)
   }, [])
 
+  // 处理移动端菜单的打开/关闭动画和状态
   useEffect(() => {
     const dlg = drawerRef.current
     if (!dlg) return
