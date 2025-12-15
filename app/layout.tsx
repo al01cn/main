@@ -110,9 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "灵狼AL01",
-              "url": "https://cn.al01.xyz",
+              "url": "https://www.al01.cn",
               "jobTitle": "Web Developer",
-              "image": "https://cn.al01.xyz/icon.png",
+              "image": "https://www.al01.cn/icon.png",
               "description": "热衷于将代码与想象力结合，为用户提供优雅的 Web 应用。"
             }),
           }}
