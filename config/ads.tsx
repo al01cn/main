@@ -43,5 +43,13 @@ export const adsConfig: AdItem[] = [
     url: "https://url.al01.cn/flowith",
     type: "url",
     mode: "to"
+  },
+  {
+    name: "Qoder",
+    text: "面向真实软件的智能体编程平台。",
+    icon: <Icon icon="ri:links-fill" color="#4285F4" className="font-bold w-[1.2rem] h-[1.2rem]" />,
+    url: "https://url.al01.cn/qoder",
+    type: "url",
+    mode: "to"
   }
 ]
