@@ -26,6 +26,14 @@ export const projectsConfig: ProjectsConfig = {
   subtitle: "最近折腾的一些有趣项目",
   projects: [
     {
+      title: "Link",
+      description:
+        "灵狼Link，基于 Next.js 16 + Prisma + SQLite 构建的现代化短链服务。让你的长链接变短！简单、安全、强大的短链生成工具。",
+      tags: ["Next.js", "Prisma", "SQLite","短链接"],
+      icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
+      links: [{label:"github", url:"https://github.com/al01cn/Link", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/Link", kind: "outline"},{label:"gitcode", url:"https://gitcode.com/al01cn/Link", kind: "outline"}],
+    },
+    {
       title: "UI",
       description:
         "灵狼UI，一个原生 + tailwindcss制作的风格化组件库，提供了一些常用的组件，如按钮、输入框、弹窗等。完全符合现代标准，且有做Vue3、React等框架的兼容版本。",
