@@ -23,8 +23,26 @@ export interface ProjectsConfig {
 
 export const projectsConfig: ProjectsConfig = {
   title: "次元口袋",
-  subtitle: "最近折腾的一些有趣项目",
+  subtitle: "最近正在折腾或已经公布的一些有趣项目",
   projects: [
+    {
+      title: "SillyTavern Launcher GUI Desktop",
+      description:
+        "SillyTavern Launcher GUI 是一个专为 SillyTavern 设计的跨平台桌面客户端，基于 Tauri v2 + Vue 3 + Rust 构建。它提供了直观、现代的图形界面，让用户无需命令行即可完整管理 SillyTavern 的安装、启动、配置和扩展。",
+      tags: ["SillyTavern", "酒馆", "傻酒馆", "启动器", "SillyTavern Launcher", "SillyTavern Launcher GUI", "Desktop"],
+      img: "https://ghfast.top/https://raw.githubusercontent.com/al01cn/sillyTavern-launcher/GUI/src/assets/images/banner.png",
+      icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
+      links: [{label:"官网", url:"https://st.al01.cn/", kind: "primary"},{label:"github", url:"https://github.com/al01cn/sillyTavern-launcher", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/sillyTavern-launcher", kind: "outline"}],
+    },
+    {
+      title: "SillyTavern Launcher GUI Mobile",
+      description:
+        "SillyTavern Launcher Mobile 是一款专为 Android 打造的集成启动器。它通过在应用内嵌入 Node.js 运行时和 SillyTavern 核心，让您能够直接在手机上本地运行完整的酒馆界面，无需依赖外部服务器或配置复杂的 Termux 环境。",
+      tags: ["SillyTavern", "酒馆", "傻酒馆", "启动器", "SillyTavern Launcher", "SillyTavern Launcher GUI", "Mobile"],
+      img: "https://ghfast.top/https://raw.githubusercontent.com/al01cn/sillyTavern-launcher/GUI/src/assets/images/banner.png",
+      icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
+      links: [{label:"官网", url:"https://st.al01.cn/", kind: "primary"},{label:"github", url:"https://github.com/al01cn/sillytavern-launcher-mobile", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/sillytavern-launcher-mobile", kind: "outline"}],
+    },
     {
       title: "Link",
       description:
@@ -34,28 +52,36 @@ export const projectsConfig: ProjectsConfig = {
       links: [{label:"github", url:"https://github.com/al01cn/Link", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/Link", kind: "outline"},{label:"gitcode", url:"https://gitcode.com/al01cn/Link", kind: "outline"}],
     },
     {
-      title: "UI",
+      title: "MCSD",
       description:
-        "灵狼UI，一个原生 + tailwindcss制作的风格化组件库，提供了一些常用的组件，如按钮、输入框、弹窗等。完全符合现代标准，且有做Vue3、React等框架的兼容版本。",
-      tags: ["Web Component", "Tailwindcss", "暂未发布"],
+        "一个基于浏览器端 FFmpeg（WebAssembly）的 Minecraft 音频资源包生成器：在本地把音频转成 OGG（Vorbis），生成 sounds.json、资源包元数据并打包下载，无需把音频上传到服务器。",
+      tags: ["音频资源包生成器", "FFmpeg", "WebAssembly", "Minecraft"],
       icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
-      links: [],
+      links: [{label:"github", url:"https://github.com/al01cn/mcsd", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/mcsd", kind: "outline"}],
     },
     {
-      title: "AI HUB",
+      title: "GSTInfo",
       description:
-        "一个能把云端所有AI提供商集合在一个系统里，支持接入OpenAI、Azure、Google等多个AI提供商的API，统一出OpenAI、Claude格式的API，支持负载均衡、故障转移等、密钥轮巡等功能。",
-      tags: ["AI", "OpenAI", "Azure", "Google", "暂未发布"],
+        "一个用于检测用户设备类型的轻量级 TypeScript 库。",
+      tags: ["检测用户设备类型", "TypeScript", "库", "Web库"],
       icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
-      links: [],
+      links: [{label:"Demo", url:"https://al01cn.github.io/gstinfo/", kind: "primary"},{label:"github", url:"https://github.com/al01cn/gstinfo", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/gstinfo", kind: "outline"}],
     },
     {
-      title: "AI",
+      title: "DetectDevice",
       description:
-        "体验过酒馆，但酒馆已经太过于臃肿，所以自己设计了一个更轻量级、且专门为角色扮演制作的版本，只保留了基本的角色扮演相关的功能，如角色创建、对话、场景切换等，同时支持导入酒馆格式的角色卡、预设。",
-      tags: ["AI", "角色扮演", "Web应用", "暂未发布"],
+        "gstinfo 是一个用于解析 SillyTavern 数据文件的 TypeScript 库",
+      tags: ["SillyTavern", "TypeScript", "库", "解析数据"],
       icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
-      links: [],
+      links: [{label:"Demo", url:"https://al01cn.github.io/detectdevice/", kind: "primary"},{label:"github", url:"https://github.com/al01cn/detectdevice", kind: "primary"},{label:"gitee", url:"https://gitee.com/al01/detectdevice", kind: "outline"}],
+    },
+    {
+      title: "TemporaryMediaStorageCloudflare",
+      description:
+        "一个轻量的「临时媒体储存」小工具，专为 Cloudflare Worker 设计，使用 Cloudflare R2 作为存储后端，并在上传时严格控制总容量 ≤ 10GB，避免超出免费存储空间。",
+      tags: ["Cloudflare", "临时媒体储存", "存储空间", "小工具", "Cloudflare Worker", "Cloudflare R2"],
+      icon: <ImageIcon weight="duotone" size={64} color="#CBD5E1" />,
+      links: [{label:"github", url:"https://github.com/al01cn/Temporary-media-storage-cloudflare", kind: "primary"}],
     }
   ],
 }
